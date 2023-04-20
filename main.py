@@ -15,4 +15,8 @@ def get_btc_price():
 # Initialize Telegram bot
 bot = telegram.Bot(token=bot_token)
 
-
+# Loop to send Bitcoin price every hour
+while True:
+    btc_price = get_btc_price()
+    bot.send_message(chat_id=chat_id, text=f'Current Bitcoin price: ${btc_price}')
+    time.sleep(3600)  # Sleep for one hour before sending next message
